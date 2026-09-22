@@ -13,9 +13,11 @@ export const SITE = {
 } as const
 
 export const NAVIGATION = [
-  { href: "/blog", label: "Blog" },
   { href: "/projects", label: "Projects" },
-  { href: "/authors", label: "Authors" },
+  { href: "/publications", label: "Publications" },
+  { href: "/blog", label: "Blog" },
+  { href: "/tech", label: "Tech" },
+  { href: "/now", label: "Now" },
 ]
 
 export const SOCIALS: { href: string; label: string; icon: SvgComponent }[] = [
