@@ -14,16 +14,13 @@ import Layout from "@/layouts/Layout.astro"
   </section>
 </Layout>
 
-<script>
-  import { PagefindUI } from "/pagefind/pagefind-ui.js"
-
+<script is:inline src="/pagefind/pagefind-ui.js"></script>
+<script is:inline>
   new PagefindUI({
     element: "#search",
     showSubResults: true,
     showImages: false,
-    translations: {
-      placeholder: "Search notes, projects, and research…",
-    },
+    translations: { placeholder: "Search notes, projects, and research…" },
   })
 </script>
 
