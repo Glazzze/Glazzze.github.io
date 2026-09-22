@@ -6,7 +6,7 @@ import { getCollection } from "astro:content"
 
 const authors = await getCollection("authors")
 const author = authors[0]
-const projects = (await getCollection("projects")).slice(0, 3)
+const projects = (await getCollection("projects", ({ data }) => data.featured)).slice(0, 3)
 const research = (await getCollection("research", ({ data }) => data.featured)).sort(
   (a, b) => a.data.order - b.data.order,
 )

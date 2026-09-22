@@ -4,4 +4,8 @@ description: "Reproducing research results for Fitness landscapes for antibodies
 tags: ["AI for Science", "Reproducibility", "Research"]
 image: "./placeholder.png"
 link: "https://github.com/Glazzze/FLAb"
+featured: true
+status: "ongoing"
+role: "Research project contributor"
+github: "https://github.com/Glazzze/FLAb"
 ---

@@ -7,7 +7,7 @@ import type { CollectionEntry } from "astro:content"
 type Props = { project: CollectionEntry<"projects"> }
 
 const { project } = Astro.props
-const { name, description, link, tags, image, startDate, endDate } =
+const { name, description, link, tags, image, startDate, endDate, status, role, github, demo } =
   project.data
 ---
 
@@ -26,6 +26,8 @@ const { name, description, link, tags, image, startDate, endDate } =
   <entry-info>
     <a href={link} target="_blank" rel="noopener noreferrer">{name}</a>
     <entry-meta>
+      {status && <project-status>{status}</project-status>}
+      {role && <span>{role}</span>}
       {startDate && (
           <project-dates>
             <time datetime={startDate.toISOString()}>
@@ -45,6 +47,8 @@ const { name, description, link, tags, image, startDate, endDate } =
         <ExternalIcon aria-hidden="true" />
         {new URL(link).hostname}
       </project-link>
+      {github && <a href={github} target="_blank" rel="noopener noreferrer">GitHub</a>}
+      {demo && <a href={demo} target="_blank" rel="noopener noreferrer">Demo</a>}
     </entry-meta>
     <p>{description}</p>
     {tags && tags.length > 0 && (
@@ -96,6 +100,11 @@ const { name, description, link, tags, image, startDate, endDate } =
           display: flex;
           align-items: center;
           gap: var(--space-3xs);
+        }
+
+        project-status {
+          color: var(--accent);
+          text-transform: capitalize;
         }
 
         project-link {

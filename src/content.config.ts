@@ -49,6 +49,11 @@ const projects = defineCollection({
       image: image().optional(),
       startDate: z.coerce.date().optional(),
       endDate: z.coerce.date().optional(),
+      featured: z.boolean().default(false),
+      status: z.enum(["ongoing", "completed", "archived"]).default("ongoing"),
+      role: z.string().optional(),
+      github: z.string().url().optional(),
+      demo: z.string().url().optional(),
     }),
 })
 
