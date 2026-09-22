@@ -17,8 +17,10 @@
 
   --background:         var(--gray-1);
   --foreground:         var(--gray-12);
-  --primary:            var(--gray-12);
-  --primary-foreground: var(--gray-1);
+  --primary:            light-dark(#3157c8, #9db2ff);
+  --primary-foreground: light-dark(#ffffff, #101426);
+  --accent:             light-dark(#3157c8, #9db2ff);
+  --accent-foreground:  light-dark(#ffffff, #101426);
   --muted:              var(--gray-3);
   --muted-foreground:   var(--gray-11);
   --destructive:        var(--red-11);
