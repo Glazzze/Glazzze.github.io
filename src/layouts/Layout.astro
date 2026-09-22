@@ -31,7 +31,7 @@ const { crumbs } = Astro.props
   </MetaHead>
   <body>
     <page-grid>
-      <page-header>
+      <page-header id="page-header">
         <page-nav>
           <Sidebar crumbs={crumbs}
             ><slot name="actions" slot="actions" /></Sidebar
@@ -46,6 +46,16 @@ const { crumbs } = Astro.props
         <page-footer><Footer /></page-footer>
       </page-content>
     </page-grid>
+    <script is:inline>
+      const header = document.getElementById("page-header")
+      if (header) {
+        const updateHeader = () => {
+          header.toggleAttribute("data-scrolled", window.scrollY > 40)
+        }
+        updateHeader()
+        window.addEventListener("scroll", updateHeader, { passive: true })
+      }
+    </script>
   </body>
 </html>
 
@@ -68,9 +78,16 @@ const { crumbs } = Astro.props
     min-width: 0;
     margin-inline: calc(-1 * var(--grid-gutter));
     padding-inline: var(--grid-gutter);
-    background: color-mix(in oklab, var(--background) 88%, transparent);
-    border-block-end: 1px solid var(--border);
-    backdrop-filter: blur(16px);
+    background: transparent;
+    border-block-end: 1px solid transparent;
+    transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
+
+    &[data-scrolled] {
+      background: color-mix(in oklab, var(--background) 78%, transparent);
+      border-block-end-color: color-mix(in oklab, var(--border) 75%, transparent);
+      box-shadow: 0 0.5rem 1.5rem color-mix(in oklab, var(--foreground) 7%, transparent);
+      backdrop-filter: blur(18px) saturate(1.2);
+    }
   }
 
   page-nav {
@@ -111,5 +128,9 @@ const { crumbs } = Astro.props
   @media (width < 64rem) {
     page-toc { display: none; }
     page-content { inline-size: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    page-header { transition: none; }
   }
 </style>
