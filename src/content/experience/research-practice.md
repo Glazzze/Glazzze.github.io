@@ -4,7 +4,7 @@ organization: "Independent and open-source projects"
 startDate: "2025-01"
 endDate: ""
 type: "research"
-order: 2
+order: 5
 featured: true
 ---
 

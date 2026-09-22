@@ -21,6 +21,7 @@ export const NAVIGATION = [
   { href: "/tech", label: "Tech" },
   { href: "/now", label: "Now" },
   { href: "/about", label: "About" },
+  { href: "/awards", label: "Awards" },
 ]
 
 export const SOCIALS: { href: string; label: string; icon: SvgComponent }[] = [

@@ -88,4 +88,18 @@ const experience = defineCollection({
   }),
 })
 
-export const collections = { blog, authors, projects, research, experience }
+const awards = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.md",
+    base: "./src/content/awards",
+  }),
+  schema: z.object({
+    title: z.string(),
+    date: z.string(),
+    organization: z.string(),
+    category: z.enum(["award", "scholarship", "honor", "volunteering"]),
+    order: z.number().default(999),
+  }),
+})
+
+export const collections = { blog, authors, projects, research, experience, awards }
