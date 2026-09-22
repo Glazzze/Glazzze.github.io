@@ -1,9 +1,7 @@
 ---
-name: "Project B"
-description: "This is an example project description! You should replace this with a description of your own project."
-tags: ["Framework A", "Library B", "Tool C", "Resource D"]
+name: "AI Materials"
+description: "Course materials and study notes for artificial intelligence coursework."
+tags: ["Artificial Intelligence", "Study Materials"]
 image: "./placeholder.png"
-link: "https://example.com"
-startDate: "2024-02-01"
-endDate: "2024-03-01"
+link: "https://github.com/Glazzze/AI-Materials"
 ---

@@ -1,11 +1,8 @@
 ---
-name: "enscribe"
-pronouns: "he/him"
-avatar: "https://avatars.githubusercontent.com/u/71956291?v=4"
-bio: "d(-_-)b"
-mail: "jason@enscribe.dev"
+name: "Yajing Liu"
+avatar: "https://avatars.githubusercontent.com/u/187188223?v=4"
+bio: "Computer Science and Technology undergraduate at Sun Yat-sen University. Interested in AI for Science, AI agents, and backend engineering."
+mail: "liuyj363@mail2.sysu.edu.cn"
 socials:
-  website: "https://enscribe.dev"
-  twitter: "https://twitter.com/enscrbe"
-  github: "https://github.com/jktrn"
+  github: "https://github.com/Glazzze"
 ---

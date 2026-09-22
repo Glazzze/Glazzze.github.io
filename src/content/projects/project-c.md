@@ -1,8 +1,7 @@
 ---
-name: "Project C"
-description: "This is an example project description! You should replace this with a description of your own project."
-tags: ["Framework A", "Library B", "Tool C", "Resource D"]
+name: "Hotwords Searcher"
+description: "A data structures and algorithms course project for searching hot words."
+tags: ["Python", "Algorithms", "Course Project"]
 image: "./placeholder.png"
-link: "https://example.com"
-startDate: "2024-03-01"
+link: "https://github.com/Glazzze/hotwords_searcher"
 ---
