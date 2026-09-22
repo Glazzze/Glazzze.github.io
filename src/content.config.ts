@@ -67,4 +67,20 @@ const research = defineCollection({
   }),
 })
 
-export const collections = { blog, authors, projects, research }
+const experience = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.md",
+    base: "./src/content/experience",
+  }),
+  schema: z.object({
+    title: z.string(),
+    organization: z.string(),
+    startDate: z.string(),
+    endDate: z.string().default(""),
+    type: z.enum(["education", "research", "work", "service"]),
+    order: z.number().default(999),
+    featured: z.boolean().default(true),
+  }),
+})
+
+export const collections = { blog, authors, projects, research, experience }

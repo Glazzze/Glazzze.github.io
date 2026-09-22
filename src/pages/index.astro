@@ -10,6 +10,9 @@ const projects = (await getCollection("projects")).slice(0, 3)
 const research = (await getCollection("research", ({ data }) => data.featured)).sort(
   (a, b) => a.data.order - b.data.order,
 )
+const experience = (await getCollection("experience", ({ data }) => data.featured)).sort(
+  (a, b) => a.data.order - b.data.order,
+)
 const posts = (await getPosts()).slice(0, 3)
 ---
 
@@ -37,7 +40,7 @@ const posts = (await getPosts()).slice(0, 3)
     {posts.map((post) => <a class="note-row" href={`/blog/${post.id}`}><time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}</time><div><h3>{post.data.title}</h3><p>{post.data.description}</p></div><span class="note-arrow" aria-hidden="true">↗</span></a>)}
   </div></section>
 
-  <section class="section-block timeline-block" aria-labelledby="experience-heading"><div class="section-heading"><div><p class="section-kicker">Background</p><h2 id="experience-heading">Education & experience</h2></div></div><div class="timeline"><div class="timeline-item"><span class="timeline-year">Current</span><div><h3>Sun Yat-sen University</h3><p>Computer Science and Technology undergraduate.</p></div></div><div class="timeline-item"><span class="timeline-year">Now</span><div><h3>Research and engineering practice</h3><p>Reproducing research results, preparing an independent paper, and strengthening backend development skills.</p></div></div></div></section>
+  <section class="section-block timeline-block" aria-labelledby="experience-heading"><div class="section-heading"><div><p class="section-kicker">Background</p><h2 id="experience-heading">Education & experience</h2></div><a class="section-link" href="/about">More about me →</a></div><div class="timeline">{experience.map((item) => <div class="timeline-item"><span class="timeline-year">{item.data.endDate || "Present"}</span><div><h3>{item.data.title}</h3><p>{item.data.organization} · {item.body?.trim() || ""}</p></div></div>)}</div></section>
 
   <section class="contact-banner" aria-labelledby="contact-heading"><div><p class="section-kicker">Let's connect</p><h2 id="contact-heading">Have a question or an interesting problem?</h2></div><a class="button button-primary" href="mailto:liuyj363@mail2.sysu.edu.cn">Send me an email →</a></section>
 </Layout>
