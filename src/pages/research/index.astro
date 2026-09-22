@@ -1,0 +1,50 @@
+---
+import MetaPage from "@/components/MetaPage.astro"
+import Layout from "@/layouts/Layout.astro"
+import { getCollection, render } from "astro:content"
+
+const research = (await getCollection("research"))
+  .sort((a, b) => a.data.order - b.data.order)
+const rendered = await Promise.all(
+  research.map(async (item) => ({ item, Content: (await render(item)).Content })),
+)
+---
+
+<Layout>
+  <MetaPage slot="head" title="Research" />
+  <header class="page-intro">
+    <p class="eyebrow">What I care about</p>
+    <h1>Research directions</h1>
+    <p>I am exploring the intersection of artificial intelligence, scientific discovery, and reliable software systems.</p>
+  </header>
+  <div class="research-list">
+    {rendered.map(({ item, Content }, index) => (
+      <article class="research-item">
+        <div class="item-index">{String(index + 1).padStart(2, "0")}</div>
+        <div>
+          <div class="item-heading"><h2>{item.data.title}</h2><span class={`status status-${item.data.status}`}>{item.data.status}</span></div>
+          <p>{item.data.summary}</p>
+          <div class="body"><Content /></div>
+          <div class="tags">{item.data.tags.map((tag) => <span>{tag}</span>)}</div>
+        </div>
+      </article>
+    ))}
+  </div>
+</Layout>
+
+<style>
+  .page-intro { padding-block: var(--space-2xl) var(--space-xl); border-bottom: 1px solid var(--border); }
+  .eyebrow { margin: 0 0 var(--space-xs); color: var(--accent); font-size: var(--step--1); font-weight: var(--font-weight-medium); letter-spacing: .04em; text-transform: uppercase; }
+  h1 { margin: 0; font-size: clamp(2.5rem, 8vw, 4.5rem); letter-spacing: -.05em; }
+  .page-intro > p:last-child { max-width: 38rem; margin: var(--space-m) 0 0; color: var(--muted-foreground); font-size: var(--step-1); line-height: 1.55; }
+  .research-list { display: flex; flex-direction: column; }
+  .research-item { display: grid; grid-template-columns: 4rem 1fr; gap: var(--space-m); padding-block: var(--space-l); border-bottom: 1px solid var(--border); }
+  .item-index { color: var(--accent); font-family: var(--font-mono); font-size: var(--step--1); }
+  .item-heading { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-s); }
+  h2 { margin: 0; font-size: var(--step-2); letter-spacing: -.025em; }
+  .research-item > div:last-child > p { max-width: 42rem; margin: var(--space-xs) 0 0; color: var(--muted-foreground); font-size: var(--step-0); line-height: 1.55; }
+  .status { padding: .2rem .55rem; border: 1px solid var(--border); border-radius: 99px; color: var(--accent); font-size: var(--step--1); text-transform: capitalize; }
+  .body { max-width: 42rem; margin-top: var(--space-s); color: var(--prose-foreground); }
+  .tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: var(--space-s); }.tags span { padding: .2rem .55rem; border: 1px solid var(--border); border-radius: 99px; color: var(--muted-foreground); font-size: var(--step--1); }
+  @media (width < 40rem) { .research-item { grid-template-columns: 1fr; gap: var(--space-xs); } }
+</style>

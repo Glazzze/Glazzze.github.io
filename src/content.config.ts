@@ -52,4 +52,19 @@ const projects = defineCollection({
     }),
 })
 
-export const collections = { blog, authors, projects }
+const research = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.md",
+    base: "./src/content/research",
+  }),
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    status: z.enum(["ongoing", "exploring", "paused", "completed"]).default("ongoing"),
+    featured: z.boolean().default(false),
+    tags: z.array(z.string()).default([]),
+    order: z.number().default(999),
+  }),
+})
+
+export const collections = { blog, authors, projects, research }
