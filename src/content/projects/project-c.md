@@ -2,7 +2,6 @@
 name: "Hotwords Searcher"
 description: "A data structures and algorithms course project for searching hot words."
 tags: ["Python", "Algorithms", "Course Project"]
-image: "./placeholder.png"
 link: "https://github.com/Glazzze/hotwords_searcher"
 featured: false
 status: "completed"

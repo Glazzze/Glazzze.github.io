@@ -1,28 +1,16 @@
 ---
 import ExternalIcon from "@/assets/icons/external.svg"
 import { formatDate } from "@/lib/utils"
-import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
 
 type Props = { project: CollectionEntry<"projects"> }
 
 const { project } = Astro.props
-const { name, description, link, tags, image, startDate, endDate, status, role, github, demo } =
+const { name, description, link, tags, startDate, endDate, status, role, github, demo } =
   project.data
 ---
 
 <li>
-  {image && (
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        tabindex="-1"
-        aria-hidden="true"
-      >
-        <Image src={image} alt="" width={640} height={336} />
-      </a>
-    )}
   <entry-info>
     <a href={link} target="_blank" rel="noopener noreferrer">{name}</a>
     <entry-meta>
