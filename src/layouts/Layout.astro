@@ -78,14 +78,14 @@ const { crumbs } = Astro.props
     min-width: 0;
     margin-inline: calc(-1 * var(--grid-gutter));
     padding-inline: var(--grid-gutter);
-    background: transparent;
+    background: color-mix(in oklab, var(--accent-background) 28%, transparent);
     border-block-end: 1px solid transparent;
     transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
 
     &[data-scrolled] {
-      background: color-mix(in oklab, var(--accent-background, var(--background)) 82%, transparent);
+      background: color-mix(in oklab, var(--accent-background, var(--background)) 84%, transparent);
       border-block-end-color: color-mix(in oklab, var(--border) 75%, transparent);
-      box-shadow: 0 0.5rem 1.5rem color-mix(in oklab, var(--accent) 10%, transparent);
+      box-shadow: 0 0.5rem 1.5rem color-mix(in oklab, var(--accent) 9%, transparent);
       backdrop-filter: blur(18px) saturate(1.25);
     }
   }

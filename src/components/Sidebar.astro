@@ -113,10 +113,31 @@ const section = NAVIGATION.find(
     a {
       display: block;
       color: var(--muted-foreground);
+      position: relative;
+      padding-block: 0.35rem;
+      text-decoration: none;
 
       &:hover,
       &[aria-current="page"] {
-        color: var(--foreground);
+        color: var(--accent);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset-inline: 0.2rem;
+        inset-block-end: 0;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 180ms ease;
+      }
+
+      &:hover::after,
+      &[aria-current="page"]::after {
+        transform: scaleX(1);
       }
     }
 
