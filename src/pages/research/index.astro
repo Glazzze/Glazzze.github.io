@@ -5,6 +5,7 @@ import { getCollection, render } from "astro:content"
 
 const research = (await getCollection("research"))
   .sort((a, b) => a.data.order - b.data.order)
+const projects = (await getCollection("projects", ({ data }) => data.featured))
 const rendered = await Promise.all(
   research.map(async (item) => ({ item, Content: (await render(item)).Content })),
 )
@@ -30,6 +31,18 @@ const rendered = await Promise.all(
       </article>
     ))}
   </div>
+  <section class="projects-section" aria-labelledby="projects-heading">
+    <div class="section-heading"><div><p class="eyebrow">Selected work</p><h2 id="projects-heading">Research projects</h2></div></div>
+    <div class="projects-grid">
+      {projects.map((project) => (
+        <a class="project-card" href={project.data.link} target="_blank" rel="noopener noreferrer">
+          <h3>{project.data.name}</h3>
+          <p>{project.data.description}</p>
+          <div class="tags">{project.data.tags?.map((tag) => <span>{tag}</span>)}</div>
+        </a>
+      ))}
+    </div>
+  </section>
 </Layout>
 
 <style>
@@ -46,5 +59,13 @@ const rendered = await Promise.all(
   .status { padding: .2rem .55rem; border: 1px solid var(--border); border-radius: 99px; color: var(--accent); font-size: var(--step--1); text-transform: capitalize; }
   .body { max-width: 42rem; margin-top: var(--space-s); color: var(--prose-foreground); }
   .tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: var(--space-s); }.tags span { padding: .2rem .55rem; border: 1px solid var(--border); border-radius: 99px; color: var(--muted-foreground); font-size: var(--step--1); }
+  .projects-section { margin-block: var(--space-2xl) var(--space-xl); padding-top: var(--space-l); border-top: 1px solid var(--border); }
+  .section-heading h2 { margin: 0; font-size: var(--step-2); }
+  .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-xs); margin-top: var(--space-s); }
+  .project-card { display: block; min-height: 10rem; padding: var(--space-m); border: 1px solid color-mix(in oklab,var(--accent) 20%,var(--border)); border-radius: var(--radius-lg); background: color-mix(in oklab,var(--accent-background) 78%,transparent); color: var(--foreground); text-decoration: none; transition: transform .2s ease, border-color .2s ease; }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .project-card h3 { margin: 0 0 var(--space-2xs); font-size: var(--step-1); }
+  .project-card p { margin: 0; color: var(--muted-foreground); line-height: 1.55; }
+  @media (width < 40rem) { .projects-grid { grid-template-columns: 1fr; } }
   @media (width < 40rem) { .research-item { grid-template-columns: 1fr; gap: var(--space-xs); } }
 </style>

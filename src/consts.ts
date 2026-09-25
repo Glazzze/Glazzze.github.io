@@ -13,14 +13,8 @@ export const SITE = {
 } as const
 
 export const NAVIGATION = [
-  { href: "/projects", label: "Projects" },
   { href: "/research", label: "Research" },
-  { href: "/publications", label: "Publications" },
   { href: "/blog", label: "Notes" },
-  { href: "/search", label: "Search" },
-  { href: "/tech", label: "Tech" },
-  { href: "/now", label: "Now" },
-  { href: "/about", label: "About" },
   { href: "/awards", label: "Awards" },
 ]
 
