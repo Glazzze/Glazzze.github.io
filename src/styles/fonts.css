@@ -116,6 +116,7 @@
 
 :root {
   --font-sans: "IBM Plex Sans", "IBM Plex Sans Fallback", sans-serif;
+  --font-display: "Newsreader", "Noto Serif SC", Georgia, serif;
   --font-mono: "IBM Plex Mono", "IBM Plex Mono Fallback", monospace;
   --font-math: "STIX Two Math", math;
 }

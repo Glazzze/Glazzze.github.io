@@ -29,10 +29,17 @@
 body {
   font-family: var(--font-sans);
   text-wrap: pretty;
+  background:
+    radial-gradient(circle at 8% 0%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 28rem),
+    radial-gradient(circle at 92% 32%, color-mix(in oklab, var(--accent) 6%, transparent), transparent 34rem),
+    var(--background);
+  line-height: 1.6;
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
   text-wrap: balance;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
 }
 
 a {
