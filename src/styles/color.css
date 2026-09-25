@@ -23,6 +23,8 @@
   --accent:             light-dark(#d14d78, #f39ab6);
   --accent-foreground:  light-dark(#ffffff, #2a111b);
   --accent-background:  light-dark(#fff7f9, #2a2025);
+  --card-background:    light-dark(rgb(255 246 248 / 76%), rgb(42 32 37 / 76%));
+  --card-border:        light-dark(rgb(244 184 200 / 55%), rgb(243 154 182 / 30%));
   --muted:              var(--gray-3);
   --muted-foreground:   var(--gray-11);
   --destructive:        var(--red-11);

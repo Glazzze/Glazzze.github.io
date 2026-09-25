@@ -57,6 +57,18 @@ const authors = await getEntries(post.data.authors)
     display: flex;
     align-items: flex-start;
     gap: var(--space-s);
+    padding: var(--space-m);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    background: var(--card-background);
+    box-shadow: 0 0.5rem 1.5rem color-mix(in oklab, var(--accent) 7%, transparent);
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+
+    &:hover {
+      border-color: color-mix(in oklab, var(--accent) 65%, var(--card-border));
+      box-shadow: 0 0.75rem 2rem color-mix(in oklab, var(--accent) 12%, transparent);
+      transform: translateY(-2px);
+    }
 
     > a {
       flex-shrink: 0;
